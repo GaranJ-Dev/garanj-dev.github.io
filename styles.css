@@ -43,6 +43,7 @@ section {
     top: 0;
     width: 100%;
     z-index: 100;
+    opacity: 80%;
   }
 
 .nav-icon {
@@ -276,12 +277,15 @@ padding: 1rem;
   transform: translateY(-10px);
 }
 
-/*Work experience tabs*/
+/*Tech journey tabs*/
 .experience {
   width: 100%;
   max-width: 700px;
   padding: 0 1rem;
   justify-self: center;
+  border-radius: 12px;
+  overflow: hidden; /* prevents content from spilling past corners */
+  border-radius: 12px;
 }
 
 .collapsible {
@@ -295,7 +299,9 @@ padding: 1rem;
   outline: none;
   font-size: 15px;
   display: block;
-  
+  border-top: 1px solid #555;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;
 }
 
 .active, .collapsible:hover {
@@ -303,13 +309,54 @@ padding: 1rem;
 }
 
 .content {
-  padding: 1rem 1.5rem;
-  display: none;
+  padding: 0 1.5rem;
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: rgb(182, 182, 182);
   width: 100%;
+  /*smooth tab transition*/
+  max-height: 0;
+  transition: max-height 0.35s ease;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;
 }
-/*Ends work experience*/
+
+.collapsible, .content { border-radius: 0;
+}
+
+
+/*Rounding corners of first and last buttons*/
+.experience button.collapsible:first-of-type {
+  border-radius: 12px 12px 0 0;
+}
+
+/* last button rounded when closed */
+.experience button.collapsible:last-of-type {
+  border-radius: 0 0 12px 12px;
+}
+
+/*Removing border radius on last button when active*/
+.experience button.collapsible:last-of-type.active {
+  border-radius: 0;
+}
+
+/*Adding borders between buttons and content*/
+.collapsible,
+.content {
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;
+}
+
+.content:last-of-type.active {
+  border-bottom: 1px solid #555;
+  border-radius: 0 0 12px 12px;
+}
+
+.collapsible {
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+  }
+
+/*Ends Tech Journey*/
 
 
 #message-box {

@@ -1,18 +1,19 @@
-// Collapsible Work section
-var coll = document.getElementsByClassName("collapsible");
-var i;
+// Collapsible Tech Journey section
+let coll = document.getElementsByClassName("collapsible");
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
+for (let i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function () {
     this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
+    let content = this.nextElementSibling;
+
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
     } else {
-      content.style.display = "block";
+      content.style.maxHeight = content.scrollHeight + "px";
     }
   });
 }
+
 
 // Draggable horizontal scroll for Projects section
 const slider = document.querySelector('.projects');
