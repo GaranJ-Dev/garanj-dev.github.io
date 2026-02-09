@@ -26,7 +26,6 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Afacad', 'Courier New', Courier, monospace;
-    overflow-x: hidden; /* Hide scrollbar */
 }
 
 section {
@@ -122,6 +121,13 @@ h2 {
 }
 
 .projects-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.projects-inner {
   max-width: 60ch;
   margin: 0 auto;
 }
@@ -156,6 +162,19 @@ overflow: visible;
   -ms-user-select: none;
   user-select: none; 
   cursor: default;
+  /*Adding disappearing effect to project card edges*/
+  -webkit-mask-image: linear-gradient(to right,
+    transparent 0,
+    black 40px,
+    black calc(100% - 40px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(to right,
+    transparent 0,
+    black 40px,
+    black calc(100% - 40px),
+    transparent 100%
+  );
 }
 
 /*Custom scrollbar for projects section*/
@@ -209,9 +228,35 @@ overflow: visible;
   transition: .2s ease;
  } 
 
-.projects > div > img {
+ .projects h3 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 1.4em;
+  font-weight: bold;
+ }
+
+
+.project img {
+  height: 10rem;      /* match this to the Pi NAS card height */
+  width: auto;        /* keeps aspect ratio */
+  display: block;
+  margin: 0 auto;     /* centers the image */
+  object-fit: contain;
   align-self: center;
   width: 100%;
+  margin: .5rem 0;
+}
+
+
+/*Special call since pic is portrait vs others landscape*/
+.pico-img {
+  width: 60%;        /* or 50%, 40%, whatever looks right */
+  max-width: 12rem;  /* prevents it from ever getting too big */
+  height: auto;      /* keeps aspect ratio */
+  margin: 0 auto;    /* centers it */
+  display: block;    /* removes inline spacing issues */
+  object-fit: contain;
+  justify-self: center;
 }
 
 /*Projects shadow code*/
@@ -283,8 +328,9 @@ padding: 1rem;
 .skill:nth-child(5) img { animation-delay: .15s;}
 .skill:nth-child(6) img { animation-delay: .4s;}
 .skill:nth-child(7) img { animation-delay: .1s;}
-.skill:nth-child(8) img { animation-delay: .5s;}
-.skill:nth-child(9) img { animation-delay: .3s;}
+.skill:nth-child(8) img { animation-delay: .55s;}
+.skill:nth-child(9) img { animation-delay: .4s;}
+.skill:nth-child(10) img { animation-delay: .22s;}
 
 .skill:hover img {
   animation-play-state: paused;
