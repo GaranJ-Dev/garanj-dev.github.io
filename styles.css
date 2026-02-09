@@ -228,6 +228,14 @@ overflow: visible;
   transition: .2s ease;
  } 
 
+ /*Alight contents of cards evenly*/
+ .project {
+  display: flex;
+  flex-direction: column;
+  min-height: 22rem;
+}
+
+
  .projects h3 {
   text-align: center;
   margin-top: 0;
@@ -258,6 +266,32 @@ overflow: visible;
   object-fit: contain;
   justify-self: center;
 }
+
+/*Styling for more info - github links*/
+.project a {
+  display: block;
+  margin-top: auto;
+  text-align: right;
+  font-weight: 600;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color .2s ease;
+  bottom: 0;
+}
+
+.project a::after {
+  content: " →";
+  transition: transform .2s ease;
+}
+
+.project a:hover {
+  color: #45752f;
+}
+
+.project a:hover::after {
+  transform: translateX(4px);
+}
+
 
 /*Projects shadow code*/
 .projects-wrapper::before,
