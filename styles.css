@@ -363,8 +363,10 @@ padding: 1rem;
 .skill:nth-child(6) img { animation-delay: .4s;}
 .skill:nth-child(7) img { animation-delay: .1s;}
 .skill:nth-child(8) img { animation-delay: .55s;}
-.skill:nth-child(9) img { animation-delay: .4s;}
-.skill:nth-child(10) img { animation-delay: .22s;}
+.skill:nth-child(9) img { animation-delay: .26s;}
+.skill:nth-child(10) img { animation-delay: .62s;}
+.skill:nth-child(11) img { animation-delay: .13s;}
+.skill:nth-child(12) img { animation-delay: .5s;}
 
 .skill:hover img {
   animation-play-state: paused;
