@@ -92,7 +92,7 @@ section {
 
 #main > h1 {
   font-size: clamp(3rem, 10vw, 5rem);
-  padding: 0 30px;
+  padding: 0 1em;
   font-weight: bold;
 }
 
