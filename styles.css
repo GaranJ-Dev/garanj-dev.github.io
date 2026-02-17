@@ -16,7 +16,7 @@ a, a:visited, a:hover, a:focus, a:active {
 
 .page-column {
   width: 100%;
-  max-width: 80ch;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -111,7 +111,7 @@ section {
 #bio {
   margin-top: 20px;
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  max-width: 70ch;
+  max-width: 80ch;
   justify-self: center;
   padding: 0 1.5em;
 }
@@ -131,19 +131,21 @@ h2 {
 
 
 .projects-inner {
-  max-width: 80ch;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .projects-wrapper { 
 position: relative;
-width: 100vw;
-left: 50%;
-right: 50%;
-margin-left: -50vw; /*part of the side shadows for tiles*/
-margin-right: -50vw;
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
 padding: 1rem 0;
-overflow: visible;
+overflow: hidden;
+
+/*Custom properties for shadow opacity, can be adjusted for different looks or themes*/
+--left-shadow-opacity: 1;
+--right-shadow-opacity: 1;
 }
 
 .projects {
@@ -151,12 +153,11 @@ overflow: visible;
   padding: 1rem 0;
   margin: 0 auto;
   font-size: clamp(1rem, 2.5vw, 1.5rem);
-  max-width: 80ch;
+  max-width: 100%;
   justify-self: center;
   gap: 1rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding: 0 calc(50% - 120px); /*Centers the selected card*/
   scroll-behavior: smooth;
   scroll-snap-align: start;
   padding-bottom: 1.5rem;
@@ -165,19 +166,8 @@ overflow: visible;
   -ms-user-select: none;
   user-select: none; 
   cursor: default;
-  /*Adding disappearing effect to project card edges*/
-  -webkit-mask-image: linear-gradient(to right,
-    transparent 0,
-    black 40px,
-    black calc(100% - 40px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(to right,
-    transparent 0,
-    black 40px,
-    black calc(100% - 40px),
-    transparent 100%
-  );
+  scroll-padding-left: 40px;
+  scroll-padding-right: 40px;
 }
 
 /*Custom scrollbar for projects section*/
@@ -206,7 +196,7 @@ overflow: visible;
 }
 
 .projects > div {
-    flex: 0 0 80%;
+    flex: 0 0 55%;
     scroll-snap-align: start;
     border-radius: 8px;
     padding: .5rem 1rem;
@@ -302,6 +292,7 @@ overflow: visible;
   content: "";
   position: absolute;
   top: 0;
+  bottom: 0;
   width: 40px;
   height: 100%;
   pointer-events: none;
@@ -310,13 +301,12 @@ overflow: visible;
 
 .projects-wrapper::before {
   left: 0;
-  background: linear-gradient(to right, #72826a, transparent);
+  background: linear-gradient(to right, rgba(114,130,106,var(--left-shadow-opacity)), transparent);
 }
 
 .projects-wrapper::after {
   right: 0;
-  background: linear-gradient(to left, #72826a, transparent);
-}
+  background: linear-gradient(to left, rgba(114,130,106,var(--right-shadow-opacity)), transparent);}
 
 .skills {
 display: flex;

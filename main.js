@@ -46,6 +46,9 @@ slider.addEventListener('mousemove', (e) => {
   slider.scrollLeft = scrollLeft - walk;
 });
 
+
+slider.addEventListener('scroll', updateScrollShadows);
+
 // Center project cards on fresh page
 window.addEventListener('load', () => {
   const slider = document.querySelector('.projects');
@@ -57,6 +60,9 @@ window.addEventListener('load', () => {
   const offset = middleCard.offsetLeft - (slider.clientWidth / 2) + (middleCard.clientWidth / 2);
 
   slider.scrollLeft = offset;
+  
+  // Initialize scroll shadows
+  updateScrollShadows();
 });
 
 slider.addEventListener('mousedown', (e) => {
@@ -101,13 +107,39 @@ document.getElementById("copy-email").addEventListener("click", () => {
   alert("Email copied!");
 });
 
-// Bounce effect for scrolling on projects section
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('click', () => {
+// Scroll shadow effect
+function updateScrollShadows() {
+  const wrapper = document.querySelector('.projects-wrapper');
+  const fadeZone = 40; // matches your CSS shadow width
+
+  const scrollLeft = slider.scrollLeft;
+  const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+  // LEFT SHADOW
+  let leftOpacity = scrollLeft <= fadeZone
+    ? scrollLeft / fadeZone
+    : 1;
+
+  // RIGHT SHADOW
+  let rightOpacity = (maxScroll - scrollLeft) <= fadeZone
+    ? (maxScroll - scrollLeft) / fadeZone
+    : 1;
+
+  wrapper.style.setProperty('--left-shadow-opacity', leftOpacity);
+  wrapper.style.setProperty('--right-shadow-opacity', rightOpacity);
+}
+
+  window.addEventListener('load', () => { updateScrollShadows();
+
+});
+
+// Click to center project cards
+document.querySelectorAll(".projects > div").forEach(card => {
+  card.addEventListener("click", () => {
     card.scrollIntoView({
-      behavior: 'smooth',
-      inline: 'center',
-      block: 'nearest'
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
     });
   });
 });
