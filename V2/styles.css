@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Courier New', Courier, monospace;
+}
+html {
+    font-size: 60%;
+    overflow-x: hidden;
+
+}
+:root {
+    --bg-color: rgb(28, 32, 36);
+    --bg-secondary-color: #2f4f4f;
+    --text-color: #f0f0f0;
+    --main-color: green;
+    --accent-color: #ff6347;
+}
+body {
+    background-color: var(--bg-color)
+
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color: var(--bg-secondary-color);
+    opacity: 80%;
+    top: 0;
+    left: 0;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+#menu-icon {
+    font-size: 2.5rem;
+    color: var(--main-color);
+    display: none;
+}
+
+.nav-icon {
+    width: 3rem;
+}
+.nav-icon:hover {
+    transform: scale(1.1);
+    transition: .4s ease;
+    left: 5%;
+}
+.nav-bar a {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-weight: bolder;
+    transition: 0.3s ease;
+    padding: 1rem;
+    letter-spacing: .2ch;
+}
+.nav-bar a:hover {
+    color: var(--accent-color);
+    transition: 0.3s ease; 
+}
