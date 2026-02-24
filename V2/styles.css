@@ -17,7 +17,7 @@ html {
     --bg-color: rgb(28, 32, 36);
     --bg-secondary-color: #2f4f4f;
     --text-color: #f0f0f0;
-    --main-color: green;
+    --main-color: #3d6666;
     --accent-color: #ff6347;
 }
 body {
@@ -64,4 +64,28 @@ header {
 .nav-bar a:hover {
     color: var(--accent-color);
     transition: 0.3s ease; 
+}
+section {
+    min-height: 100vh;
+    padding: 10rem 12%;
+}
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home h1 {
+    font-size: 7rem;
+    color: var(--accent-color);
+    font-weight: bolder;
+    padding: 2rem 0;
+}
+.home p {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-top: 2rem;
+}
+.social-links img {
+    height: 4rem;
+    margin: 3rem 1rem;
 }
