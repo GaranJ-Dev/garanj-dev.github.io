@@ -1,13 +1,27 @@
-// Smooth scrolling for project cards
 const container = document.querySelector('.projects');
 const cards = document.querySelectorAll('.project');
 
 cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const left = card.offsetLeft - container.offsetWidth / 2 + card.offsetWidth / 2;
-        container.scrollTo({ left, behavior: 'smooth' });
-    });
+  // Click: center and mark selected
+  card.addEventListener('click', () => {
+    clearSelected(cards);
+    card.classList.add('selected');
+    card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    card.focus({ preventScroll: true });
+  });
+
+  // Keyboard: Enter or Space should behave like click
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.click();
+    }
+  });
 });
+
+function clearSelected(list) {
+  list.forEach(c => c.classList.remove('selected'));
+}
 
  // Shadow effect for scrollable projects section
 const leftShadow = document.querySelector('.shadow-left');

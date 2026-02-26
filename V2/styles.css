@@ -9,15 +9,15 @@
     font-family: 'Courier New', Courier, monospace;
 }
 html {
-    font-size: 60%;
+    font-size: 50%;
     overflow-x: hidden;
-
 }
 :root {
     --bg-color: rgb(28, 32, 36);
     --bg-secondary-color: #2f4f4f;
     --text-color: #f0f0f0;
     --main-color: #3d6666;
+    --secondary-color: #4a8c8c;
     --accent-color: #ff6347;
 }
 body {
@@ -73,9 +73,12 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 200ch;
+    margin: 0 auto;
+    padding: 0 1rem
 }
 .home h1 {
-    font-size: 7rem;
+    font-size: 10rem;
     color: var(--accent-color);
     font-weight: bolder;
     padding: 2rem 0;
@@ -98,36 +101,36 @@ section {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     width: 100%;
-    padding: 10rem 0;
     position: relative;
+    gap: 1rem;
+    padding: 8rem 4rem 5rem;
 }
-.projects::-webkit-scrollbar {
-    height: 8px;
-}
-.projects::-webkit-scrollbar-track {
-    background: transparent;
-}
-.projects::-webkit-scrollbar-thumb {
-    background: var(--main-color);
-    border-radius: 4px;
-}
-.projects::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-color);
+
+
+.projects-wrapper {
+    position: relative;
 }
 .project {
     background-color: var(--bg-secondary-color);
     color: var(--text-color); 
-    margin: 0 2rem;
+    margin: 3rem 4rem;
     font-size: 2rem;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
     flex: 0 0 clamp(240px, 70vw, 450px);
-    text-align: center;
     align-items: start;
-    padding: 1rem;
-    border-radius: 8px;
     gap: 0.75rem;
-    min-height: 550px;
+    min-height: 475px;
+    position: relative;
+    min-width: 220px;
+    padding: 1.25rem;
+    border-radius: 12px; 
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms; 
+    transform: translateY(0); 
+    /* Initial subtle shadow for depth */
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent-color) 60%, transparent);
+    outline: none;
+    cursor: pointer;
 }
 .project:first-child {
     margin-left: 2%;
@@ -135,38 +138,84 @@ section {
 .project:last-child {
     margin-right: 2%;
 }
+.section-projects {
+    padding: 3rem 0;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 7rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+}
+
 .project-card {
     flex: 0 0 clamp(240px, 70vw, 320px);
-    background: rgba(255,255,255,0.1);
-    border-radius: 16px; padding: 1rem;
+    border-radius: 16px;
+    padding: 1rem;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
-    .image-wrapper {
-        width: 100%;
+.project h3 {
+    font-size: 3rem;
+    color: var(--accent-color);
+    padding: 1rem;
+    justify-self: center;
+}
+.card-content {
+    font-size: 2rem;
+    padding: 0 1rem;
+    color: var(--text-color);
+}
+.image-wrapper {
         aspect-ratio: 16 / 9;
         overflow: hidden;
         border-radius: 12px;
+        padding-bottom: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .image-wrapper img {
-    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
 }
 
+
+/* Hover lift */
+.project:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-color) 85%, transparent);
+  z-index: 20;
+}
+
+/* Keyboard focus visible */
+.project:focus-visible {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 0px 12px color-mix(in srgb, var(--accent-color) 75%);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Persisted selected state (after click) */
+.project.selected {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 0 20px var(--accent-color), 0 0 60px color-mix(in srgb, var(--accent-color) 50%, transparent);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+
 /*Styling for more info - github links*/
 .project a {
   display: block;
-  margin-top: auto;
   text-align: right;
   font-weight: 600;
-  color: var(--main-color);
+  color: var(--text-color);
   text-decoration: none;
   transition: color .2s ease;
-  bottom: 0;
 }
 
 .project a::after {
@@ -181,6 +230,13 @@ section {
 .project a:hover::after {
   transform: translateX(4px);
 }
+.more-info {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
 .project p {
     display: -webkit-box;
     -webkit-line-clamp: 3; /* number of lines */
@@ -188,16 +244,7 @@ section {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.projects {
-    position: relative;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 1rem;
-}
 
-.projects-wrapper {
-    position: relative;
-}
 
 .shadow-left,
 .shadow-right {
@@ -217,4 +264,17 @@ section {
 .shadow-right {
     right: 0;
     background: linear-gradient(to left, var(--bg-color), transparent);
+}
+.projects::-webkit-scrollbar {
+    height: 8px;
+}
+.projects::-webkit-scrollbar-track {
+    background: transparent;
+}
+.projects::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 4px;
+}
+.projects::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
 }
