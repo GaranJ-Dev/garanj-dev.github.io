@@ -12,6 +12,19 @@ html {
     font-size: 50%;
     overflow-x: hidden;
 }
+html::-webkit-scrollbar {
+    width: 8px;
+}
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+    background: var(--bg-secondary-color);
+    opacity: 0.8;
+}
+html::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
 :root {
     --bg-color: rgb(28, 32, 36);
     --bg-secondary-color: #2f4f4f;
@@ -75,7 +88,7 @@ section {
     align-items: center;
     max-width: 200ch;
     margin: 0 auto;
-    padding: 0 1rem
+    padding: 4rem 5rem
 }
 .home h1 {
     font-size: 10rem;
@@ -98,12 +111,12 @@ section {
     justify-content: flex-start;
     margin: 0;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     scroll-behavior: smooth;
     width: 100%;
     position: relative;
     gap: 1rem;
-    padding: 8rem 4rem 5rem;
+    padding: 5rem;
 }
 
 
@@ -146,7 +159,7 @@ section {
 .section-title {
     font-size: 7rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 7rem;
     color: var(--accent-color);
 }
 
@@ -203,8 +216,8 @@ section {
 /* Persisted selected state (after click) */
 .project.selected {
   transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 0 20px var(--accent-color), 0 0 60px color-mix(in srgb, var(--accent-color) 50%, transparent);
-  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 25px var(--accent-color), 0 0 60px color-mix(in srgb, var(--accent-color) 0%, transparent);
+    transition: 1s ease; 
 }
 
 
@@ -277,4 +290,75 @@ section {
 }
 .projects::-webkit-scrollbar-thumb:hover {
     background: var(--accent-color);
+}
+.skills h2 {
+    font-size: 100rem;
+    color: var(--accent-color);
+    font-weight: bolder;
+    padding: 2rem 0;
+    text-align: center;
+}
+.skills {
+display: flex;
+flex-wrap: wrap;
+gap: 5.5rem;
+max-width: 200ch;
+margin: 5rem auto 0 auto;
+justify-content: center;
+padding: 3rem;
+}
+
+.skill {
+  text-align: center;
+}
+
+/*transistion for icon labels*/
+.skill .label {
+  opacity: 0;
+  transition: opacity .4s ease;
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.skill:hover .label {
+  opacity: 1;
+}
+
+/*Making the icons float*/
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+  100% { transform: translateY(0); }
+}
+
+.skill img {
+  width: 55px;
+  animation: float 8s ease-in-out infinite;
+}
+
+/*Setting time variations so icons move at diffent rates*/
+.skill:nth-child(2) img { animation-delay: .2s;}
+.skill:nth-child(3) img { animation-delay: .4s;}
+.skill:nth-child(4) img { animation-delay: 1.1s;}
+.skill:nth-child(5) img { animation-delay: .55s;}
+.skill:nth-child(6) img { animation-delay: .4s;}
+.skill:nth-child(7) img { animation-delay: .1s;}
+.skill:nth-child(8) img { animation-delay: 1.25s;}
+.skill:nth-child(9) img { animation-delay: .26s;}
+.skill:nth-child(10) img { animation-delay: .62s;}
+.skill:nth-child(11) img { animation-delay: 1.13s;}
+.skill:nth-child(12) img { animation-delay: .5s;}
+
+.skill:hover img {
+  animation-play-state: paused;
+  transform: translateY(-10px);
+}
+
+.skills h3 {
+    font-size: 3rem;
+    color: var(--accent-color);
+    padding: 1rem;
+    justify-self: center;
 }

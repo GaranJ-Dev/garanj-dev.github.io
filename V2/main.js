@@ -1,3 +1,4 @@
+// Smooth scrolling for project cards
 const container = document.querySelector('.projects');
 const cards = document.querySelectorAll('.project');
 
@@ -36,3 +37,16 @@ function updateShadows() {
 
 container.addEventListener('scroll', updateShadows);
 updateShadows();
+
+// Parallax effect for skill icons
+const icons = document.querySelectorAll('.skill-icon');
+
+document.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 4;  // range: -2px to +2px
+  const y = (e.clientY / window.innerHeight - 0.5) * 4;
+
+  icons.forEach((icon, index) => {
+    const depth = (index % 3 + 1) * 0.4; // gives each icon a slightly different movement
+    icon.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
+  });
+});
