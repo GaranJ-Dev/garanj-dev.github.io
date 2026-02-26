@@ -226,13 +226,6 @@ overflow: hidden;
   transition: .2s ease;
  } 
 
- /*Alight contents of cards evenly*/
- .project {
-  display: flex;
-  flex-direction: column;
-  min-height: 22rem;
-}
-
 
  .projects h3 {
   text-align: center;
