@@ -1,74 +1,66 @@
-// Collapsible Tech Journey section
-let coll = document.getElementsByClassName("collapsible");
+// Smooth scrolling for project cards
+const container = document.querySelector('.projects');
+const cards = document.querySelectorAll('.project');
 
-for (let i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    let content = this.nextElementSibling;
+cards.forEach(card => {
+  // Click: center and mark selected
+  card.addEventListener('click', () => {
+    clearSelected(cards);
+    card.classList.add('selected');
+    card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    card.focus({ preventScroll: true });
+  });
 
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
+  // Keyboard: Enter or Space should behave like click
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.click();
     }
   });
+});
+
+function clearSelected(list) {
+  list.forEach(c => c.classList.remove('selected'));
 }
 
-// Draggable horizontal scroll for Projects section
-const slider = document.querySelector('.projects');
+ // Shadow effect for scrollable projects section
+const leftShadow = document.querySelector('.shadow-left');
+const rightShadow = document.querySelector('.shadow-right');
 
-let isDown = false;
-let startX;
-let scrollLeft;
+function updateShadows() {
+    const maxScroll = container.scrollWidth - container.clientWidth;
 
-slider.addEventListener('mousedown', (e) => {
-  isDown = true;
-  slider.classList.add('dragging');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
+    leftShadow.style.opacity = container.scrollLeft > 0 ? 1 : 0;
+    rightShadow.style.opacity = container.scrollLeft < maxScroll ? 1 : 0;
+}
 
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.classList.remove('dragging');
-});
+container.addEventListener('scroll', updateShadows);
+updateShadows();
 
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  slider.classList.remove('dragging');
-});
+// Collapsible sections for journey timeline
+const collapsibles = document.querySelectorAll('.collapsible');
 
-slider.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 1.5;
-  slider.scrollLeft = scrollLeft - walk;
+collapsibles.forEach(button => {
+  button.addEventListener('click', function () {
+    this.classList.toggle('active');
+    const content = this.nextElementSibling;
+    content.classList.toggle('is-open');
+  });
 });
 
 
-slider.addEventListener('scroll', updateScrollShadows);
+// Parallax effect for skill icons
+const icons = document.querySelectorAll('.skill-icon');
 
-// Center project cards on fresh page
-window.addEventListener('load', () => {
-  const slider = document.querySelector('.projects');
-  const cards = slider.children;
+document.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 4;  // range: -2px to +2px
+  const y = (e.clientY / window.innerHeight - 0.5) * 4;
 
-  const middleIndex = Math.floor(cards.length / 2);
-  const middleCard = cards[middleIndex];
-
-  const offset = middleCard.offsetLeft - (slider.clientWidth / 2) + (middleCard.clientWidth / 2);
-
-  slider.scrollLeft = offset;
-  
-  // Initialize scroll shadows
-  updateScrollShadows();
-});
-
-slider.addEventListener('mousedown', (e) => {
-  if (!e.target.closest('.project-card')) return;
-  isDown = true; startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
+  icons.forEach((icon, index) => {
+    const depth = (index % 3 + 1) * 0.4; // gives each icon a slightly different movement
+    icon.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
+  });
 });
 
 //Message me modal
@@ -105,41 +97,4 @@ document.getElementById("spam-check").addEventListener("input", function () {
 document.getElementById("copy-email").addEventListener("click", () => {
   navigator.clipboard.writeText("garanj@proton.me");
   alert("Email copied!");
-});
-
-// Scroll shadow effect
-function updateScrollShadows() {
-  const wrapper = document.querySelector('.projects-wrapper');
-  const fadeZone = 40; // matches your CSS shadow width
-
-  const scrollLeft = slider.scrollLeft;
-  const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-  // LEFT SHADOW
-  let leftOpacity = scrollLeft <= fadeZone
-    ? scrollLeft / fadeZone
-    : 1;
-
-  // RIGHT SHADOW
-  let rightOpacity = (maxScroll - scrollLeft) <= fadeZone
-    ? (maxScroll - scrollLeft) / fadeZone
-    : 1;
-
-  wrapper.style.setProperty('--left-shadow-opacity', leftOpacity);
-  wrapper.style.setProperty('--right-shadow-opacity', rightOpacity);
-}
-
-  window.addEventListener('load', () => { updateScrollShadows();
-
-});
-
-// Click to center project cards
-document.querySelectorAll(".projects > div").forEach(card => {
-  card.addEventListener("click", () => {
-    card.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest"
-    });
-  });
 });
