@@ -104,7 +104,12 @@ section {
 .social-links img {
     height: 4rem;
     margin: 3rem 1rem;
+    transition: filter 0.1s ease;
 }
+.social-links img:hover {
+    filter: drop-shadow(0 0 15px color-mix(in srgb, var(--accent-color) 80%, transparent));
+}
+
 .projects {
     display: flex;
     align-items: center;
@@ -376,6 +381,14 @@ padding: 3rem;
     margin: 0 auto;
     border-radius: 12px;
     overflow: hidden;
+    /* Initial subtle glow */
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 40%, transparent);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Increase glow when any collapsible button is hovered */
+.experience:has(.collapsible:hover) {
+    box-shadow: 0 0 30px color-mix(in srgb, var(--accent-color) 70%, transparent);
 }
 
 .collapsible {
