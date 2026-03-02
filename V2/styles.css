@@ -474,7 +474,22 @@ padding: 3rem;
     margin-bottom: 0;
 }
 
- 
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: var(--bg-secondary-color);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 1.5rem;
+}
+
+footer > p {
+  margin: 0.5rem 1rem;
+  max-height: 30px;
+}
 
 /*
 - Add a glow behind the projects div, make it start to glow when the user hovers over the section title
