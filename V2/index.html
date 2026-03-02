@@ -18,7 +18,7 @@
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#journey">Journey</a>
-            <a href="#message">Message</a>
+            <button id="contact-btn" class="nav-contact-btn">Message</button>
             <a href="/v2/GaranJResume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
         </nav>
     </header>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
@@ -178,6 +178,17 @@
         </div>
     </div>
 </section>
+
+<div id="contact-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h3>Contact Me</h3>
+        <p id="email-label">Email: <span id="email-hidden">[hidden]</span></p>
+        <p class="anti-spam">To scare off bots, <strong>5</strong> type the number in this line</p>
+        <input type="text" id="spam-check" placeholder="Enter the number" autocomplete="off">
+        <button id="copy-email" disabled>Copy Email to Clipboard</button>
+    </div>
+</div>
 
 <footer>
     <p>Copyright © 2026 Garan Johnson</p>

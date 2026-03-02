@@ -62,3 +62,39 @@ document.addEventListener('mousemove', (e) => {
     icon.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
   });
 });
+
+//Message me modal
+// Open modal
+document.getElementById("contact-btn").addEventListener("click", () => {
+  document.getElementById("contact-modal").style.display = "flex";
+});
+
+// Close modal
+document.getElementById("close-modal").addEventListener("click", () => {
+  document.getElementById("contact-modal").style.display = "none";
+});
+
+// Anti-spam check
+document.getElementById("spam-check").addEventListener("input", function () {
+  const btn = document.getElementById("copy-email");
+  if (this.value.trim() === "5") {
+  btn.disabled = false;
+  btn.classList.add("enabled");
+
+  // reveal email
+  document.getElementById("email-hidden").textContent = "garanj@proton.me";
+} else {
+  btn.disabled = true;
+  btn.classList.remove("enabled");
+
+  // hide email again
+  document.getElementById("email-hidden").textContent = "[hidden]";
+}
+
+});
+
+// Copy email
+document.getElementById("copy-email").addEventListener("click", () => {
+  navigator.clipboard.writeText("garanj@proton.me");
+  alert("Email copied!");
+});

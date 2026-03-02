@@ -78,6 +78,23 @@ header {
     color: var(--accent-color);
     transition: 0.3s ease; 
 }
+
+.nav-contact-btn {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-weight: bolder;
+    transition: 0.3s ease;
+    padding: 1rem;
+    letter-spacing: .2ch;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-contact-btn:hover {
+    color: var(--accent-color);
+    transition: 0.3s ease;
+}
 section {
     min-height: 100vh;
     padding: 10rem 12%;
@@ -490,6 +507,105 @@ footer > p {
   margin: 0.5rem 1rem;
   max-height: 30px;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: var(--bg-secondary-color);
+  color: var(--text-color);
+  padding: 3rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 30px color-mix(in srgb, var(--accent-color) 50%, transparent);
+}
+
+.modal-content h3 {
+  color: var(--accent-color);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content p {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+.anti-spam {
+  background-color: rgba(255, 99, 71, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--accent-color);
+}
+
+.modal-content input {
+  background-color: var(--main-color);
+  color: var(--text-color);
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid var(--secondary-color);
+  border-radius: 6px;
+  font-size: 1.8rem;
+  margin: 1.5rem 0;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent-color) 40%, transparent);
+}
+
+#close-modal {
+  float: right;
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  transition: 0.3s ease;
+  line-height: 1;
+}
+
+#close-modal:hover {
+  transform: scale(1.2);
+}
+
+#copy-email {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: var(--main-color);
+  border: 1px solid var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  cursor: not-allowed;
+  font-size: 1.8rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#copy-email.enabled {
+  background: var(--secondary-color);
+  cursor: pointer;
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-color) 50%, transparent);
+}
+
+#copy-email.enabled:hover {
+  background: color-mix(in srgb, var(--secondary-color) 100%, var(--accent-color) 10%);
+  transform: translateY(-2px);
+}
+
 
 /*
 - Add a glow behind the projects div, make it start to glow when the user hovers over the section title
