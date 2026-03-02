@@ -98,3 +98,8 @@ document.getElementById("copy-email").addEventListener("click", () => {
   navigator.clipboard.writeText("garanj@proton.me");
   alert("Email copied!");
 });
+
+document.querySelectorAll('a[href^="http"]').forEach(link => {
+  link.setAttribute('target', '_blank');
+  link.setAttribute('rel', 'noopener noreferrer');
+});
