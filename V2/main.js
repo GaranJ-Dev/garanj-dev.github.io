@@ -38,6 +38,18 @@ function updateShadows() {
 container.addEventListener('scroll', updateShadows);
 updateShadows();
 
+// Collapsible sections for journey timeline
+const collapsibles = document.querySelectorAll('.collapsible');
+
+collapsibles.forEach(button => {
+  button.addEventListener('click', function () {
+    this.classList.toggle('active');
+    const content = this.nextElementSibling;
+    content.classList.toggle('is-open');
+  });
+});
+
+
 // Parallax effect for skill icons
 const icons = document.querySelectorAll('.skill-icon');
 

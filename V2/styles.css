@@ -283,6 +283,7 @@ section {
 }
 .projects::-webkit-scrollbar-track {
     background: transparent;
+    margin: 0 2rem;
 }
 .projects::-webkit-scrollbar-thumb {
     background: var(--main-color);
@@ -306,6 +307,7 @@ max-width: 200ch;
 margin: 5rem auto 0 auto;
 justify-content: center;
 padding: 3rem;
+;
 }
 
 .skill {
@@ -362,3 +364,109 @@ padding: 3rem;
     padding: 1rem;
     justify-self: center;
 }
+
+/* Journey Section - Collapsible */
+.section-journey {
+    margin: 0 auto;
+}
+
+.experience {
+    width: 100%;
+    max-width: 200ch;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.collapsible {
+    background-color: var(--main-color);
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 2rem;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 2.2rem;
+    font-weight: bold;
+    display: block;
+    border-top: 1px solid var(--secondary-color);
+    transition: all 0.3s ease;
+    letter-spacing: 0.1ch;
+}
+
+.collapsible:hover {
+    background-color: var(--secondary-color);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+.collapsible.active {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 15px color-mix(in srgb, var(--accent-color) 40%, transparent);
+}
+
+.content {
+    padding: 0 2rem;
+    overflow: hidden;
+    background-color: var(--bg-secondary-color);
+    width: 100%;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+    border-left: 1px solid var(--secondary-color);
+    border-right: 1px solid var(--secondary-color);
+}
+
+.content.is-open { 
+    max-height: 50rem; /* or 80rem, just bigger than your tallest panel */
+ }
+
+
+.journey-block {
+    padding: 2rem;
+}
+
+.journey-block p {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin: 1.5rem 0;
+    line-height: 1.6;
+}
+
+.journey-block p:first-child {
+    margin-top: 0;
+}
+
+/* Rounding corners of first button */
+.experience button.collapsible:first-of-type {
+    border-radius: 12px 12px 0 0;
+}
+
+/* Rounding corners of last button when closed */
+.experience button.collapsible:last-of-type {
+    border-radius: 0 0 12px 12px;
+}
+
+/* Remove border-radius on last button when active */
+.experience button.collapsible:last-of-type.active {
+    border-radius: 0;
+}
+
+/* When last tab is open, give the content the bottom border and rounded corners */
+.experience button.collapsible:last-of-type.active + .content {
+    border-bottom: 1px solid var(--secondary-color);
+    border-radius: 0 0 12px 12px;
+}
+
+.journey-block p:last-child {
+    margin-bottom: 0;
+}
+
+ 
+
+/*
+- Add a glow behind the projects div, make it start to glow when the user hovers over the section title
+- add orange outline to project cards
+- change color of social media icons and for :hover
+- shrink projects scroll bar and make it not touch the edges
+- add footer
+*/
