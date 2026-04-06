@@ -53,9 +53,13 @@ header {
 }
 
 #menu-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--main-color);
     display: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 3rem;
+    height: 3rem;
 }
 
 .nav-icon {
@@ -502,6 +506,49 @@ footer {
   right: 0;
   font-size: 1.5rem;
 }
+
+/* Mobile Hamburger Menu Styles */
+@media (max-width: 768px) {
+  #menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-bar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-secondary-color);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    display: none;
+    border-top: 1px solid var(--main-color);
+  }
+
+  .nav-bar.active {
+    display: flex;
+  }
+
+  .nav-bar a,
+  .nav-bar button {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  .nav-contact-btn {
+    background: none;
+    border: none;
+  }
+
+  .nav-contact-btn:hover {
+    color: var(--accent-color);
+  }
+  }
 
 footer > p {
   margin: 0.5rem 1rem;

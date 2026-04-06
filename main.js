@@ -1,3 +1,18 @@
+// Hamburger menu toggle
+const menuIcon = document.getElementById("menu-icon");
+const navBar = document.querySelector(".nav-bar");
+
+menuIcon.addEventListener("click", () => {
+  navBar.classList.toggle("active");
+});
+
+// Close menu when a link is clicked
+document.querySelectorAll(".nav-bar a, .nav-contact-btn").forEach(link => {
+  link.addEventListener("click", () => {
+    navBar.classList.remove("active");
+  });
+});
+
 // Smooth scrolling for project cards
 const container = document.querySelector('.projects');
 const cards = document.querySelectorAll('.project');
