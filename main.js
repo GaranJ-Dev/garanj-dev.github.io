@@ -13,6 +13,13 @@ document.querySelectorAll(".nav-bar a, .nav-contact-btn").forEach(link => {
   });
 });
 
+// Close menu when clicking outside of it
+document.addEventListener("click", (e) => {
+  if (!navBar.contains(e.target) && !menuIcon.contains(e.target) && navBar.classList.contains("active")) {
+    navBar.classList.remove("active");
+  }
+});
+
 // Smooth scrolling for project cards
 const container = document.querySelector('.projects');
 const cards = document.querySelectorAll('.project');
@@ -87,6 +94,15 @@ document.getElementById("contact-btn").addEventListener("click", () => {
 // Close modal
 document.getElementById("close-modal").addEventListener("click", () => {
   document.getElementById("contact-modal").style.display = "none";
+});
+
+// Close modal when clicking outside of modal-content
+document.getElementById("contact-modal").addEventListener("click", (e) => {
+  const modal = document.getElementById("contact-modal");
+  const modalContent = document.querySelector(".modal-content");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
 });
 
 // Anti-spam check
