@@ -183,6 +183,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    scroll-margin-top: 10rem;
 }
 
 .next-up-content {
@@ -227,6 +228,7 @@ section {
 .section-projects {
     padding: 3rem 0;
     width: 100%;
+    scroll-margin-top: 10rem;
 }
 
 .section-title {
