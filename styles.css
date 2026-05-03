@@ -34,9 +34,120 @@ html::-webkit-scrollbar-thumb:hover {
     --accent-color: #ff6347;
 }
 body {
-    background-color: var(--bg-color)
-
+    background-color: var(--bg-color);
+    position: relative;
+    overflow-x: hidden;
 }
+
+/* Circuit Board Background */
+.circuit-board-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.circuit-lines {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.circuit-line {
+    stroke: var(--main-color);
+    stroke-width: 1.5;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.circuit-line:hover {
+    opacity: 0.5;
+}
+
+.circuit-accent {
+    opacity: 0.15;
+    stroke-dasharray: 8, 4;
+}
+
+.circuit-node {
+    fill: var(--secondary-color);
+    opacity: 0.4;
+}
+
+.pulse-node {
+    fill: var(--secondary-color);
+    filter: url(#glow);
+}
+
+@keyframes node-pulse {
+    0% {
+        opacity: 0;
+        r: 4;
+    }
+    50% {
+        opacity: 0.6;
+        r: 6;
+    }
+    100% {
+        opacity: 0;
+        r: 4;
+    }
+}
+
+.pulse-node {
+    animation: node-pulse 3s infinite ease-in-out;
+}
+
+.pulse-node:nth-child(1) {
+    animation-duration: 5.8s;
+}
+
+.pulse-node:nth-child(2) {
+    animation-duration: 7.2s;
+}
+
+.pulse-node:nth-child(3) {
+    animation-duration: 5.3s;
+}
+
+.pulse-node:nth-child(4) {
+    animation-duration: 7.7s;
+}
+
+.pulse-node:nth-child(5) {
+    animation-duration: 6.5s;
+}
+
+.pulse-node:nth-child(6) {
+    animation-duration: 8s;
+}
+
+.pulse-node:nth-child(7) {
+    animation-duration: 6.1s;
+}
+
+.pulse-node:nth-child(8) {
+    animation-duration: 6.8s;
+}
+
+/* Ensure content is above background */
+header,
+.home,
+.section-next-up,
+.section-projects,
+.section-skills,
+.section-journey,
+footer {
+    position: relative;
+    z-index: 2;
+}
+
 
 header {
     position: fixed;
@@ -49,7 +160,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 101;
 }
 
 #menu-icon {
@@ -193,6 +304,8 @@ section {
     border-radius: 12px;
     box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 40%, transparent);
     transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .next-up-content:hover {
@@ -204,7 +317,7 @@ section {
     color: var(--accent-color);
     margin-bottom: 2rem;
     font-weight: bold;
-    justify-self: center;
+    text-align: center;
 }
 
 .next-up-content p {
@@ -216,13 +329,6 @@ section {
 
 .next-up-content p:last-child {
     margin-bottom: 0;
-}
-
-.launching-soon {
-    font-weight: bold;
-    color: var(--accent-color);
-    font-style: italic;
-    margin-top: 2rem;
 }
 
 .section-projects {
